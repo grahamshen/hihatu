@@ -1,0 +1,2 @@
+mysqldump -hlocalhost -uroot -pg -R $1>$1.sql
+
