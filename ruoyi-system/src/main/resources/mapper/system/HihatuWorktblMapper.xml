@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <sql id="selectHihatuWorktblVo">
         select hid, person, hdate, status, fix, hours, stime, etime, extra from hihatu_worktbl
+        order by hdate desc
     </sql>
 
     <select id="selectHihatuWorktblList" parameterType="HihatuWorktbl" resultMap="HihatuWorktblResult">
