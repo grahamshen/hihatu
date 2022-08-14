@@ -10,14 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="hdate"    column="hdate"    />
         <result property="status"    column="status"    />
         <result property="fix"    column="fix"    />
-        <result property="hours"    column="hours"    />
         <result property="stime"    column="stime"    />
         <result property="etime"    column="etime"    />
+        <result property="relax"    column="relax"    />
+        <result property="loc"    column="loc"    />
         <result property="extra"    column="extra"    />
     </resultMap>
 
     <sql id="selectHihatuWorktblVo">
-        select hid, person, hdate, status, fix, hours, stime, etime, extra from hihatu_worktbl
+        select hid, person, hdate, status, fix, stime, etime,relax,loc, extra from hihatu_worktbl
         order by hdate desc
     </sql>
 
@@ -27,9 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="person != null  and person != ''"> and person = #{person}</if>
             <if test="hdate != null "> and hdate = #{hdate}</if>
             <if test="status != null  and status != ''"> and status = #{status}</if>
-            <if test="hours != null "> and hours = #{hours}</if>
             <if test="stime != null  and stime != ''"> and stime = #{stime}</if>
             <if test="etime != null  and etime != ''"> and etime = #{etime}</if>
+            <if test="relax != null  and relax != ''"> and relax = #{relax}</if>
+            <if test="loc != null  and loc != ''"> and loc = #{loc}</if>
             <if test="extra != null  and extra != ''"> and extra = #{extra}</if>
         </where>
     </select>
@@ -46,9 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hdate != null">hdate,</if>
             <if test="status != null and status != ''">status,</if>
             <if test="fix != null">fix,</if>
-            <if test="hours != null">hours,</if>
             <if test="stime != null">stime,</if>
             <if test="etime != null">etime,</if>
+            <if test="relax != null">relax,</if>
+            <if test="loc != null">loc,</if>
             <if test="extra != null">extra,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -56,9 +59,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hdate != null">#{hdate},</if>
             <if test="status != null and status != ''">#{status},</if>
             <if test="fix != null">#{fix},</if>
-            <if test="hours != null">#{hours},</if>
             <if test="stime != null">#{stime},</if>
             <if test="etime != null">#{etime},</if>
+            <if test="relax != null">#{relax},</if>
+            <if test="loc != null">#{loc},</if>
             <if test="extra != null">#{extra},</if>
          </trim>
     </insert>
@@ -70,9 +74,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hdate != null">hdate = #{hdate},</if>
             <if test="status != null and status != ''">status = #{status},</if>
             <if test="fix != null">fix = #{fix},</if>
-            <if test="hours != null">hours = #{hours},</if>
             <if test="stime != null">stime = #{stime},</if>
             <if test="etime != null">etime = #{etime},</if>
+            <if test="relax != null">relax = #{relax},</if>
+            <if test="loc != null">loc = #{loc},</if>
             <if test="extra != null">extra = #{extra},</if>
         </trim>
         where hid = #{hid}

@@ -37,10 +37,6 @@ public class HihatuWorktbl extends BaseEntity
     /** 已审批 */
     private Long fix;
 
-    /** 工作时长 */
-    @Excel(name = "工作时长")
-    private BigDecimal hours;
-
     /** 开始时间 */
     @Excel(name = "开始时间")
     private String stime;
@@ -48,6 +44,12 @@ public class HihatuWorktbl extends BaseEntity
     /** 结束时间 */
     @Excel(name = "结束时间")
     private String etime;
+    
+    @Excel(name = "休息时间")
+    private String relax;
+
+    @Excel(name = "备注")
+    private String loc;
 
     /** 备注 */
     @Excel(name = "备注")
@@ -98,16 +100,24 @@ public class HihatuWorktbl extends BaseEntity
     {
         return fix;
     }
-    public void setHours(BigDecimal hours) 
-    {
-        this.hours = hours;
-    }
 
-    public BigDecimal getHours() 
-    {
-        return hours;
-    }
-    public void setStime(String stime) 
+    public String getRelax() {
+		return relax;
+	}
+
+	public void setRelax(String relax) {
+		this.relax = relax;
+	}
+
+	public String getLoc() {
+		return loc;
+	}
+
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+
+	public void setStime(String stime) 
     {
         this.stime = stime;
     }
@@ -143,9 +153,10 @@ public class HihatuWorktbl extends BaseEntity
             .append("hdate", getHdate())
             .append("status", getStatus())
             .append("fix", getFix())
-            .append("hours", getHours())
             .append("stime", getStime())
             .append("etime", getEtime())
+            .append("relax", getRelax())
+            .append("loc", getLoc())
             .append("extra", getExtra())
             .toString();
     }

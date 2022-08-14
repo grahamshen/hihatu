@@ -102,10 +102,6 @@
                     }
                 },
                 {
-                    field: 'hours',
-                    title: '工作时长'
-                },
-                {
                     field: 'stime',
                     title: '开始时间',
                     formatter: function(value, row, index) {
@@ -118,6 +114,17 @@
                     formatter: function(value, row, index) {
                        return ( value.substring(0,5));
                     }
+                },
+                {
+                    field: 'relax',
+                    title: '休息时间',
+                    formatter: function(value, row, index) {
+                       return ( value.substring(0,5));
+                    }
+                },
+                {
+                    field: 'loc',
+                    title: '位置'
                 },
                 {
                     field: 'extra',
