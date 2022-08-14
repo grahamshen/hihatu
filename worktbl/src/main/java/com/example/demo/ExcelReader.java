@@ -30,6 +30,9 @@ public class ExcelReader {
 
         // Creating a Workbook from an Excel file (.xls or .xlsx)
         Workbook workbook = WorkbookFactory.create(new File(this.xlspath));
+        Cell cell;
+        String name=null;
+        String loc=null;
 
         // Retrieving the number of sheets in the Workbook
         System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
@@ -37,7 +40,7 @@ public class ExcelReader {
 
         // Getting the Sheet at index zero
         Sheet sheet = workbook.getSheetAt(0);
-
+        
         // Create a DataFormatter to format and get each cell's value as String
         DataFormatter dataFormatter = new DataFormatter();
 
@@ -56,11 +59,31 @@ public class ExcelReader {
             int j=0;
             // Now let's iterate over the columns of the current row
             Iterator<Cell> cellIterator = row.cellIterator();
-
+            if (i==8)
+            {
+            	cell = cellIterator.next();
+            	name=cell.getStringCellValue();
+            	continue;
+            }
+            else if (i==10)
+            {
+            	for (int k=0;k<20;k++)
+            	{
+            	loc=cellIterator.next().getStringCellValue();
+            	System.out.println(k+":"+loc);
+            	if (loc.length()>0)
+            		break;
+            	}
+            	continue;
+            }
+            else if (i<13)
+            	continue;
+            
             while (cellIterator.hasNext()) {
 
             	j=j+1;
-                Cell cell = cellIterator.next();
+                cell = cellIterator.next();
+                
                 if (j==1)
                 {
                 	if (cell.getCellTypeEnum()!=org.apache.poi.ss.usermodel.CellType.FORMULA)
@@ -96,8 +119,8 @@ public class ExcelReader {
             	System.out.println(date.toString()+"\t"+stime+"\t"+etime+"\t"+itime);
             	Time st=Time.valueOf(stime+":00");
             	Time et=Time.valueOf(etime+":00");  
-            	Long d = et.getTime()- st.getTime();
-            	repository.save(new Hihatu_worktbl( "某员工",  date,  "normal", 0, (d/3600000.0-1.0),st, et,null));
+            	Time it= Time.valueOf(itime+":00");
+            	repository.save(new Hihatu_worktbl( name,  date,  "normal", 0,st, et, it ,loc,null));
             }
         }
 

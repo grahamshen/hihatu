@@ -22,32 +22,46 @@ public class Hihatu_worktbl {
 	
 	private Integer fix;
 	
-	private Double hours;
 	
 	private Time stime;
 	
 	private Time etime;
+	private Time relax;
 	
+	private String loc;
 	private String extra;
 
-	public Hihatu_worktbl(String person, Date hdate, String status, Integer fix, Double hours,Time stime, Time etime,String extra) {
+
+	public Time getRelax() {
+		return relax;
+	}
+
+	public void setRelax(Time relax) {
+		this.relax = relax;
+	}
+
+	public String getLoc() {
+		return loc;
+	}
+
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+
+	public Hihatu_worktbl(String person, Date hdate, String status, Integer fix, Time stime, Time etime, Time relax,
+			String loc, String extra) {
+		super();
 		this.person = person;
 		this.hdate = hdate;
 		this.status = status;
 		this.fix = fix;
-		this.hours=hours;
 		this.stime = stime;
 		this.etime = etime;
+		this.relax = relax;
+		this.loc = loc;
 		this.extra = extra;
 	}
 
-	public Double getHours() {
-		return hours;
-	}
-
-	public void setHours(Double hours) {
-		this.hours = hours;
-	}
 
 	public Integer getHid() {
 		return hid;
