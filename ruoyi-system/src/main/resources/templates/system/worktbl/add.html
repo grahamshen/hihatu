@@ -40,7 +40,10 @@
             <div class="form-group">    
                 <label class="col-sm-3 control-label">开始时间：</label>
                 <div class="col-sm-8">
-                	<input name="stime" type="text" class="form-control" id="datetimepicker-demo-1" placeholder="yyyy-MM-dd HH:mm">
+                    <div class="input-group date">
+                        <input name="stime" class="form-control" placeholder="HH:ii" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
                 </div>
             </div>
             <div class="form-group">    
@@ -61,7 +64,6 @@
     <th:block th:include="include :: datetimepicker-js" />
     <script th:inline="javascript">
         var prefix = ctx + "system/worktbl"
-        $("#datetimepicker-demo-1").datetimepicker();
         $("#form-worktbl-add").validate({
             focusCleanup: true
         });
@@ -75,6 +77,12 @@
         $("input[name='hdate']").datetimepicker({
             format: "yyyy-mm-dd",
             minView: "month",
+            autoclose: true
+        });
+        $("input[name='stime']").datetimepicker({
+            format: "HH:ii",
+            startView:"hour",
+            minView: "hour",
             autoclose: true
         });
     </script>
