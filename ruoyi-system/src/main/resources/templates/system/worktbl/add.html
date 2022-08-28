@@ -41,10 +41,7 @@
             <div class="form-group">    
                 <label class="col-sm-3 control-label">开始时间：</label>
                 <div class="col-sm-8">
-                    <div class="input-group date">
-                        <input name="stime" class="form-control" placeholder="HH:ii" type="text">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
+	                <input type="text" name="stime" class="timepicker"/>
                 </div>
             </div>
             <div class="form-group">    
@@ -83,13 +80,7 @@
             minView: "month",
             autoclose: true
         });
-        $("input[name='stime']").datetimepicker({
-            format: "HH:ii",
-            startView:"hour",
-            minView: "hour",
-            autoclose: true
-        });
-            var options = {
+        var options = {
         now: "09:00", //hh:mm 24 hour format only, defaults to current time
         twentyFour: true,  //Display 24 hour format, defaults to false
         upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
@@ -106,6 +97,8 @@
         show: null, //A function to be called when the Wickedpicker is shown
         clearable: false, //Make the picker's input clearable (has clickable "x")
     };
+    $("input[name='stime']").wickedpicker(options);
+    options.now="18:00"
     $("input[name='etime']").wickedpicker(options);
     </script>
 </body>
