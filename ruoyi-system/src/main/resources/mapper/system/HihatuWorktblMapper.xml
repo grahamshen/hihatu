@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectHihatuWorktblVo">
-        select hid, person, hdate, status, fix, stime, etime,relax,loc, extra from hihatu_worktbl
-        order by hdate desc
+        select hid, person, hdate, status, fix, stime, etime,relax,loc, extra 
+        from hihatu_worktbl
     </sql>
 
     <select id="selectHihatuWorktblList" parameterType="HihatuWorktbl" resultMap="HihatuWorktblResult">
@@ -34,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="loc != null  and loc != ''"> and loc = #{loc}</if>
             <if test="extra != null  and extra != ''"> and extra = #{extra}</if>
         </where>
+        order by hdate desc
     </select>
     
     <select id="selectHihatuWorktblByHid" parameterType="Long" resultMap="HihatuWorktblResult">
