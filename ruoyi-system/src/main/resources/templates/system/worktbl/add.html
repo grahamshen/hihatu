@@ -108,6 +108,21 @@
     options.now="01:00"
     $("input[name='relax']").wickedpicker(options);
 
+    $("input[name='status']").change(function(){
+	if (this.value=="vacation")
+	{
+		$("input[name='stime']").attr("disabled",true);
+		$("input[name='etime']").attr("disabled",true);
+		$("input[name='relax']").attr("disabled",true);
+	}
+	else
+	{
+		$("input[name='stime']").attr("disabled",false);
+		$("input[name='etime']").attr("disabled",false);
+		$("input[name='relax']").attr("disabled",false);
+	}	
+});
+
     </script>
 </body>
 </html>
