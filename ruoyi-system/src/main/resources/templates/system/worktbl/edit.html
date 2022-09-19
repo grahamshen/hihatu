@@ -19,7 +19,8 @@
                 <label class="col-sm-2 control-label is-required">日期：</label>
                 <div class="col-sm-3">
                     <div class="input-group date">
-                        <input name="hdate" th:value="${#dates.format(hihatuWorktbl.hdate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text" required>                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input name="hdate" th:value="${#dates.format(hihatuWorktbl.hdate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text" required>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </div>
             </div>
