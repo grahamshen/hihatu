@@ -29,7 +29,7 @@
                 <label class="col-sm-3 control-label is-required">类别：</label>
                 <div class="col-sm-8">
                     <div class="radio-box" th:each="dict : ${@dict.getType('work_status')}">
-                        <input type="radio" th:id="${'status_' + dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.dictValue} eq 'normal'" required>
+                        <input type="radio" th:id="${'status_' + dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.dictValue} eq *{status}" required>
                         <label th:for="${'status_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
                     </div>
                 </div>
