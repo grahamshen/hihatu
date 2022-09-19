@@ -117,7 +117,11 @@
 		options.now = $("#relax").val().substring(0, 5);
 		$("input[name='relax']").wickedpicker(options);
 
-
+		if ($("input[name='status']:checked").val() == "vacation") 
+			$("#work_detail").attr("hidden",true);
+		else 
+			$("#work_detail").attr("hidden",false);
+			
 		$("input[name='status']").change(function () {
 			if (this.value== "vacation")
 			//if ($("input[name='status']:checked").val() == "vacation") 
