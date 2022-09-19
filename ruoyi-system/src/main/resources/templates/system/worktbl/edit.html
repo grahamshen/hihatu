@@ -7,19 +7,19 @@
 </head>
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-worktbl-add">
+        <form class="form-horizontal m" id="form-worktbl-edit" th:object="${hihatuWorktbl}">
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">员工：</label>
                 <div class="col-sm-3">
                     <input name="person" class="form-control" type="text" 
-                    th:value="${@permission.getPrincipalProperty('userName')}" required>
+                    th:field="*{person}"
+                    required>
                 </div>
   
                 <label class="col-sm-2 control-label is-required">日期：</label>
                 <div class="col-sm-3">
                     <div class="input-group date">
-                        <input name="hdate" class="form-control" placeholder="yyyy-MM-dd" type="text" required>
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input name="hdate" th:value="${#dates.format(hihatuWorktbl.hdate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text" required>                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </div>
             </div>
@@ -66,6 +66,7 @@
     <th:block th:include="include :: datetimepicker-js" />
     <th:block th:include="include :: timepicker-js" />
     <script th:src="@{/js/smoothscroll.js}"></script>
+
     <script th:inline="javascript">
         var prefix = ctx + "system/worktbl";
         $("#form-worktbl-edit").validate({
@@ -81,8 +82,32 @@
         $("input[name='hdate']").datetimepicker({
             format: "yyyy-mm-dd",
             minView: "month",
-            autoclose: true
+            autoclose: true,
         });
+        $("input[name='hdate']").datetimepicker("setDate", new Date());
+        var options = {
+   //     now: "09:00", //hh:mm 24 hour format only, defaults to current time
+        twentyFour: true,  //Display 24 hour format, defaults to false
+        upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
+        downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
+        close: 'wickedpicker__close', //The close class selector to use, for custom CSS
+        hoverState: 'hover-state', //The hover state class to use, for custom CSS
+        title: '', //The Wickedpicker's title,
+        showSeconds: false, //Whether or not to show seconds,
+        timeSeparator: ':', // The string to put in between hours and minutes (and seconds)
+        secondsInterval: 1, //Change interval for seconds, defaults to 1,
+        minutesInterval: 1, //Change interval for minutes, defaults to 1
+        beforeShow: null, //A function to be called before the Wickedpicker is shown
+        afterShow: null, //A function to be called after the Wickedpicker is closed/hidden
+        show: null, //A function to be called when the Wickedpicker is shown
+        clearable: false, //Make the picker's input clearable (has clickable "x")
+    };
+    $("input[name='stime']").wickedpicker(options);
+  //  options.now="18:00"
+    $("input[name='etime']").wickedpicker(options);
+ //   options.now="01:00"
+    $("input[name='relax']").wickedpicker(options);
+
     </script>
 </body>
 </html>
