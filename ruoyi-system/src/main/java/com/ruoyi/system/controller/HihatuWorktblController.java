@@ -110,6 +110,10 @@ public class HihatuWorktblController extends BaseController
     @ResponseBody
     public AjaxResult editSave(HihatuWorktbl hihatuWorktbl)
     {
+/*    	hihatuWorktbl.setStime(hihatuWorktbl.getStime()+":00");
+    	hihatuWorktbl.setEtime(hihatuWorktbl.getEtime()+":00");
+    	hihatuWorktbl.setRelax(hihatuWorktbl.getRelax()+":00");
+*/    	
         return toAjax(hihatuWorktblService.updateHihatuWorktbl(hihatuWorktbl));
     }
 

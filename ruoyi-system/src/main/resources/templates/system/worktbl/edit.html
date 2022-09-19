@@ -8,6 +8,7 @@
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form class="form-horizontal m" id="form-worktbl-edit" th:object="${hihatuWorktbl}">
+            <input name="hid" th:field="*{hid}" type="hidden">        
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">员工：</label>
                 <div class="col-sm-3">
@@ -76,6 +77,9 @@
 
         function submitHandler() {
             if ($.validate.form()) {
+//				$("#stime").attr("value",$("#stime").val()+":00");
+//				$("#etime").attr("value",$("#etime").val()+":00");
+//				$("#relax").attr("value",$("#relax").val()+":00");
                 $.operate.save(prefix + "/edit", $('#form-worktbl-edit').serialize());
             }
         }
