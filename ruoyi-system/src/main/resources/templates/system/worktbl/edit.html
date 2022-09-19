@@ -36,17 +36,17 @@
             <div class="form-group">    
                 <label class="col-sm-3 control-label">开始时间：</label>
                 <div class="col-sm-3">
-	                <input type="text" name="stime" class="timepicker"/>
+	                <input type="text" name="stime" th:field="*{stime}" class="timepicker"/>
                 </div>
                 <label class="col-sm-2 control-label">结束时间：</label>
                 <div class="col-sm-3">
-	                <input type="text" name="etime" class="timepicker"/>
+	                <input type="text" name="etime" th:field="*{etime}" class="timepicker"/>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label">休息时间：</label>
                 <div class="col-sm-8">
-	                <input type="text" name="relax" class="timepicker"/>
+	                <input type="text" name="relax" th:field="*{relax}" class="timepicker"/>
                 </div>
             </div>
             <div class="form-group">    
@@ -87,7 +87,7 @@
         });
 //        $("input[name='hdate']").datetimepicker("setDate", new Date());
         var options = {
-   //     now: "09:00", //hh:mm 24 hour format only, defaults to current time
+        now: $("#stime").val().substring(0,5), //hh:mm 24 hour format only, defaults to current time
         twentyFour: true,  //Display 24 hour format, defaults to false
         upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
         downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
@@ -104,9 +104,9 @@
         clearable: false, //Make the picker's input clearable (has clickable "x")
     };
     $("input[name='stime']").wickedpicker(options);
-  //  options.now="18:00"
+    options.now=$("#etime").val().substring(0,5);
     $("input[name='etime']").wickedpicker(options);
- //   options.now="01:00"
+    options.now=$("#relax").val().substring(0,5);
     $("input[name='relax']").wickedpicker(options);
 
     </script>
